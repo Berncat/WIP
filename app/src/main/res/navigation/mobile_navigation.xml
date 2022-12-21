@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_search">
+
+    <fragment
+        android:id="@+id/nav_listings"
+        android:name="ie.wit.studentshare.ui.listings.ListingsFragment"
+        android:label="@string/menu_listings"
+        tools:layout="@layout/fragment_listings" />
+
+    <fragment
+        android:id="@+id/nav_add"
+        android:name="ie.wit.studentshare.ui.add.AddFragment"
+        android:label="@string/menu_add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_nav_add_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="ie.wit.studentshare.ui.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_nav_search_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_favourites"
+        android:name="ie.wit.studentshare.ui.favourites.FavouritesFragment"
+        android:label="@string/menu_favourites"
+        tools:layout="@layout/fragment_favourites" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="ie.wit.studentshare.ui.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <argument
+            android:name="coordinates"
+            app:argType="ie.wit.studentshare.models.Coordinates" />
+        <action
+            android:id="@+id/action_mapFragment_to_nav_search"
+            app:destination="@id/nav_search" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="ie.wit.studentshare.ui.location.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_nav_add"
+            app:destination="@id/nav_add" />
+    </fragment>
+</navigation>
